@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<!--
+  Sirat Al-Quran
+  Copyright (c) 2026 Ameerkhan Mohamed Ansari. All rights reserved.
+  Personal, non-commercial use only. See the in-app Copyright & license page.
+  Quran text, translations, audio and prayer data belong to their respective owners (see License & sources).
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="author" content="Ameerkhan Mohamed Ansari"><meta name="copyright" content="© 2026 Ameerkhan Mohamed Ansari. All rights reserved.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Sirat Al-Quran"><meta name="theme-color" content="#0a2b20">
+<title>Sirat Al-Quran</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Amiri:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--cd:#fff;--hd:#0f4d3b;--ft:16px;--fr:16px;--dk:#0a2b20;--sb:#0c2a20;--gold:#c9a15a;--bg:#f3f5f1;--pill:#e2eae4;--tx:#13271f;--mut:#6a7c73;--bd:#e7e9e2;--fs:2rem}
+*{box-sizing:border-box}html,body{margin:0;height:100%}
+body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);color:var(--tx);overflow-x:hidden}
+button{font:inherit;color:inherit;cursor:pointer;-webkit-user-select:none;user-select:none}
+a{color:inherit;text-decoration:none}
+svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.app{display:grid;grid-template-columns:348px 1fr;min-height:100%}
+aside{background:var(--sb);color:#e9efe9;position:sticky;top:0;height:100vh;overflow:auto;display:flex;flex-direction:column;-webkit-user-select:none;user-select:none}
+.brand{padding:calc(14px + env(safe-area-inset-top,0px)) 18px 14px;border-bottom:1px solid #ffffff1c;display:flex;justify-content:space-between;align-items:flex-end}
+.brand b{font-family:'Amiri',serif;font-size:2.3rem;color:var(--gold);font-weight:400;line-height:1.1}
+aside nav{flex:1;padding-top:8px}
+aside nav a,aside nav button{display:flex;gap:14px;align-items:center;width:100%;padding:13px 20px;background:none;border:0;text-align:left;font-size:1.02rem}
+aside nav a.on{background:#ffffff18;color:var(--gold)}
+.credit{font-size:.78rem;color:#9db1a6;padding:16px 18px;border-top:1px solid #ffffff1c}
+.close,.mh{display:none}
+.wrap{min-width:0}
+.dk{background:var(--dk);color:#eef2ee;padding:calc(22px + env(safe-area-inset-top,0px)) 30px 24px}
+.lt{padding:24px 24px calc(60px + env(safe-area-inset-bottom,0px));max-width:1180px;margin:0 auto}
+.gr{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px}
+.ar{font-family:'Amiri Quran','Amiri','Traditional Arabic',serif;direction:rtl}
+.hi{font-family:'Amiri',serif;font-size:2.2rem;color:var(--gold);line-height:1.2}
+.en{border:1px solid #ffffff22;background:#ffffff0d;color:#dfe7e1;border-radius:999px;padding:12px 18px}
+.cont{border:1px solid #ffffff1f;background:#ffffff0f;border-radius:20px;padding:20px 22px}
+.cont small{color:var(--gold);letter-spacing:.04em}
+.cont div{font-size:1.2rem;margin-top:6px}
+.card{background:var(--cd);border:1px solid var(--bd);border-radius:22px;padding:20px 24px;margin-bottom:14px}
+.mut{color:var(--mut)}
+.pills{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0 26px}
+.pills a{display:flex;gap:10px;align-items:center;background:var(--pill);border:1px solid #d3ddd6;border-radius:999px;padding:14px 22px}
+.sh{display:flex;justify-content:space-between;align-items:center;margin:8px 0 10px}
+.sh h2{margin:0;font-size:1.5rem;font-weight:500}
+.row{display:flex;align-items:center;gap:16px;padding:16px 18px;border-bottom:1px solid var(--bd);background:var(--cd);border-radius:18px;margin-bottom:6px}
+.row:hover{background:var(--cd)}
+.num{width:54px;height:54px;border-radius:50%;background:#f6eedb;border:1px solid #ecdcb8;color:var(--gold);display:grid;place-items:center;flex:none}
+.sm{width:46px;height:46px}
+.row .m{flex:1;font-size:1.15rem}.row small{color:var(--mut);font-size:.95rem}
+.row .ar{font-size:1.7rem}
+.top{background:var(--dk);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:calc(16px + env(safe-area-inset-top,0px)) 24px 16px;font-size:1.3rem;font-weight:500}
+.hero{background:var(--dk);color:#fff;border:1px solid #17382d;border-radius:26px;text-align:center;padding:28px 20px;margin-bottom:16px}
+.hero .ar{color:var(--gold);font-size:2.6rem;line-height:1.5}
+.gb{display:inline-flex;gap:8px;align-items:center;border-radius:999px;padding:12px 22px;border:1px solid #3a4a35;background:#122d22;color:var(--gold);margin:6px 4px}
+.gb.f{background:var(--gold);color:#1d1604;border:0;font-weight:600}
+.ay{padding:18px 24px}.ay.on{border-color:var(--gold);box-shadow:0 0 0 2px #c9a15a44}
+.ah{display:flex;justify-content:space-between;align-items:center}
+.ah div{display:flex;gap:6px}
+.ib{border:0;background:none;padding:9px;border-radius:10px;color:var(--tx)}.ib:hover{background:var(--bg)}
+.txt{font-size:var(--fs);line-height:2.4;text-align:right;margin:10px 0 14px;-webkit-user-select:text;user-select:text}
+.tl{font-size:var(--ft);font-style:italic;color:#3f6552;margin:6px 0;-webkit-user-select:text;user-select:text}
+.tr{font-size:var(--fr);line-height:1.75;margin:8px 0;-webkit-user-select:text;user-select:text}
+.lb{font-size:.78rem;color:var(--mut);display:block}
+.bar{height:6px;background:#2a463b;border-radius:9px;cursor:pointer;margin:14px auto 4px;max-width:420px}.bar i{display:block;height:100%;width:0;background:var(--gold);border-radius:9px}
+.dlg{position:fixed;inset:0;background:#0009;display:grid;place-items:center;z-index:80;padding:16px}
+.dlg>div{background:var(--cd);color:var(--tx);border-radius:20px;width:min(440px,100%);max-height:82vh;display:flex;flex-direction:column;padding:18px}
+.inp{width:100%;padding:12px 14px;border:1px solid var(--bd);border-radius:12px;background:var(--bg);font:inherit;margin:10px 0}
+.list{overflow:auto}.list button{display:flex;justify-content:space-between;gap:10px;width:100%;padding:13px 10px;border:0;background:none;text-align:left;border-radius:10px}
+.list button:hover,.list .sel{background:var(--bg)}
+.btn{background:var(--pill);border:1px solid #d3ddd6;border-radius:999px;padding:11px 20px}
+.err{text-align:center;padding:36px 20px}
+.toast{position:fixed;left:50%;bottom:calc(90px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--dk);color:#fff;padding:10px 20px;border-radius:99px;z-index:90}
+.letters{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:12px}
+.letters div{background:var(--cd);border:1px solid var(--bd);border-radius:18px;text-align:center;padding:14px}.letters .ar{font-size:2.6rem;color:var(--gold)}
+.compass{width:240px;height:240px;border-radius:50%;border:4px solid var(--gold);margin:20px auto;position:relative}
+.compass i{position:absolute;left:50%;top:10px;width:5px;height:110px;margin-left:-2px;background:var(--gold);transform-origin:50% 110px;border-radius:5px}
+.ov,.bt{display:none}
+html[data-theme=dark]{--bg:#0b1411;--cd:#13211c;--tx:#e8efe9;--mut:#8fa399;--bd:#223630;--pill:#1c2f28;--hd:#8fd1ae}
+html[data-theme=light]{--bg:#fff;--cd:#fafaf8;--pill:#eef2ef;--bd:#e6e8e3}
+html[data-theme=dark]{--dk:#07130f;--sb:#08150f}
+html[data-theme=sepia]{--bg:#fbf4e6;--cd:#fffaf0;--pill:#eadfc4;--bd:#e8dcc0;--tx:#3b2e1a;--mut:#8a7452;--hd:#7c5a2a;--gold:#a87c3e;--dk:#5b4220;--sb:#4c3719}
+.thg{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:620px){.thg{grid-template-columns:1fr}}
+.thc{text-align:left;background:var(--cd);border:2px solid var(--bd);border-radius:22px;padding:22px;color:var(--tx);display:block;width:100%}
+.thc.on{border-color:var(--gold)}.thc b{font-size:1.25rem;display:flex;justify-content:space-between;margin-top:14px}
+.sw i{display:inline-block;width:42px;height:42px;border-radius:50%;margin-right:8px;border:1px solid #0002}
+.sh3{display:flex;gap:10px;align-items:center;color:var(--hd);margin:0 0 6px;font-size:1.15rem}
+.rw{display:block;width:100%;padding:16px 0;border:0;border-top:1px solid var(--bd);background:none;text-align:left;color:var(--tx);font-size:1.05rem}
+.card .rw:first-of-type{border-top:0}
+.ln{display:flex;justify-content:space-between;align-items:center}.ln .mut{display:flex;align-items:center;gap:6px}
+.tgl{width:52px;height:30px;border-radius:99px;border:0;background:#c9d1cc;position:relative;padding:0}.tgl.on{background:#0f4d3b}
+.tgl i{position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;transition:left .15s}.tgl.on i{left:25px}
+.selb{display:flex;justify-content:space-between;align-items:center;width:100%;border:1px solid var(--bd);border-radius:16px;padding:15px 16px;background:none;color:var(--tx);font-size:1.05rem;margin-top:8px}
+.sp{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.sp button{border:1px solid var(--bd);background:none;border-radius:12px;padding:10px 16px;color:var(--tx)}.sp .on{background:#0f4d3b;color:#fff;border-color:#0f4d3b}
+.dg{color:#c0262d}
+@media(max-width:860px){
+.app{grid-template-columns:1fr}
+aside{position:fixed;left:0;top:0;bottom:0;width:min(360px,82vw);z-index:70;transform:translateX(-100%);transition:transform .25s}
+aside.open{transform:none}.close{display:block;background:none;border:0;color:#fff;padding:6px}
+.ov.open{display:block;position:fixed;inset:0;background:#0007;z-index:60}
+.mh{display:flex;align-items:center;justify-content:space-between;background:var(--dk);color:#fff;padding:calc(12px + env(safe-area-inset-top,0px)) 14px 12px;font-weight:600}
+.mh button{background:none;border:0;color:#fff;padding:6px}
+.dk{padding:6px 16px 20px}.lt{padding:16px 14px calc(100px + env(safe-area-inset-bottom,0px))}
+.top{display:none}
+.bt{display:flex;position:fixed;bottom:0;left:0;right:0;background:var(--dk);padding:8px 0 calc(8px + env(safe-area-inset-bottom,0px));z-index:50;justify-content:space-around}
+.bt a{display:flex;flex-direction:column;align-items:center;gap:4px;color:#c8d3cc;font-size:.78rem;padding:4px 14px}.bt a.on{color:var(--gold)}
+.pills a{padding:12px 16px}.row .m{font-size:1.05rem}.txt{line-height:2.2}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside id="sd"><div class="brand"><div><b class="ar" style="font-family:Amiri">القرآن</b><div>Al Quran</div></div><button class="close" id="cl" aria-label="Close menu"></button></div><nav id="nav"></nav><div class="credit">Quran text © Tanzil · Translations via AlQuran.cloud</div></aside>
+<div class="ov" id="ov"></div>
+<div class="wrap"><div class="mh"><button id="mb" aria-label="Menu"></button><span>Al Quran</span><a href="#/search" id="ms" aria-label="Search"></a></div><div id="v"></div></div>
+</div>
+<div class="bt" id="bt"></div>
+<script>
+const OWNER='Ameerkhan Mohamed Ansari',YR='2026',LIC=[["Copyright", ["© {YR} {OWNER}. All rights reserved.", "The name Sirat Al-Quran, the application design, user interface, source code, original written content (including the Learn Arabic, How to Pray and Tajweed summaries) and icons (together, the “Application”) are protected by copyright and other laws.", "The Application does not claim ownership of the Quran, its Arabic text, translations, transliteration, recitations or the other third-party content it displays. Those belong to their respective owners and are shown under their own terms (see License & sources)."]], ["License to use", ["Subject to these terms, {OWNER} grants you a limited, personal, non-exclusive, non-transferable, revocable licence to install and use the Application for your own personal, non-commercial use.", "Without written permission you may not: copy, modify, adapt or create derivative works of the Application; distribute, sell, rent, lease, sublicense or publish it; reverse engineer or decompile it, except where the law allows this despite this restriction; remove or change copyright or attribution notices; or use it to build a competing product or to collect data in bulk from the services it connects to."]], ["Quran text integrity", ["The Arabic Quran text is displayed exactly as supplied by its source. It must not be altered, abbreviated or paraphrased when it is used, copied or shared through the Application."]], ["Third-party content and services", ["Quran text, translations, transliteration, audio recitations, prayer times and fonts are provided by third parties under their own licences and terms. Those terms continue to apply to that content. Nothing in this licence gives you rights to it beyond what those terms allow."]], ["Religious guidance disclaimer", ["The Application is an educational and reading aid. It is not a source of religious rulings (fatwa). For questions of religious practice, please consult a qualified scholar.", "Prayer times and the Qibla direction are calculated estimates that depend on your location, the calculation method you choose and your device’s sensors. Please confirm them with your local mosque or religious authority when accuracy matters."]], ["No warranty", ["The Application is provided “as is” and “as available”, without warranties of any kind, express or implied, including accuracy, availability, fitness for a particular purpose and non-infringement. Content and services come from third parties and may become unavailable or change without notice."]], ["Limitation of liability", ["To the maximum extent permitted by law, {OWNER} is not liable for any indirect, incidental, special or consequential damages, or for loss of data, arising from your use of or inability to use the Application. Nothing in these terms limits liability that cannot be limited by law."]], ["Your data", ["The Application has no account system. Your settings, bookmarks and reading progress are stored on your device only. See Privacy & data for details."]], ["Termination and changes", ["This licence ends automatically if you break these terms. {OWNER} may update these terms from time to time; continued use after an update means you accept the new terms."]]];
+const API='https://api.alquran.cloud/v1',$=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const P={home:'M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z',quran:'M5 3h12v15H5z M9 8h4 M9 12h4 M5 18a2 2 0 0 0 0 3h12',search:'M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14z M21 21l-5-5',star:'M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.8l-5.8 3.1 1.1-6.5L2.6 9.8l6.5-.9z',bm:'M6 3h12v18l-6-4-6 4z',grad:'M2 9l10-5 10 5-10 5z M6 11v5c3 2 9 2 12 0v-5',music:'M9 18V5l12-2v13 M6 21a3 3 0 1 0 0-6 3 3 0 0 0 0 6z M18 19a3 3 0 1 0 0-6 3 3 0 0 0 0 6z',compass:'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z M16 8l-2 6-6 2 2-6z',clock:'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z M12 7v5l3 2',pin:'M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z M12 8a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z',globe:'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z M3 12h18 M12 3c3 3 3 15 0 18 M12 3c-3 3-3 15 0 18',set:'M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z M12 2v3 M12 19v3 M2 12h3 M19 12h3 M5 5l2 2 M17 17l2 2 M5 19l2-2 M17 7l2-2',play:'M7 4l13 8-13 8z',pause:'M8 4v16 M16 4v16',copy:'M9 9h11v11H9z M5 15V4h11',share:'M18 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6z M6 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z M18 22a3 3 0 1 0 0-6 3 3 0 0 0 0 6z M8.6 13.5l6.8 4 M15.4 6.5l-6.8 4',back:'M15 5l-7 7 7 7',x:'M5 5l14 14 M19 5L5 19',menu:'M4 7h16 M4 12h16 M4 17h16',chev:'M9 5l7 7-7 7',pal:'M12 3a9 9 0 1 0 0 18c1.500 0 2-1 1.500-2s0-2 1.500-2h2a4 4 0 0 0 4-4c0-5-4.500-10-9-10z M7.500 11h.01 M10 7h.01 M14 7h.01',info:'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z M12 11v5 M12 8h.01',shield:'M12 3l8 3v6c0 5-4 8-8 9-4-1-8-4-8-9V6z',user:'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z M12 8a3 3 0 1 0 0 6 3 3 0 0 0 0-6z M6.500 18c1.500-3 9.500-3 11 0',warn:'M12 4l9 16H3z M12 10v4 M12 17h.01',doc:'M6 3h9l4 4v14H6z M9 12h7 M9 16h7',type:'M5 5h14 M12 5v14 M9 19h6',ear:'M8 9a4 4 0 1 1 8 0c0 3-3 3-3 6a2 2 0 0 1-4 0',hand:'M8 11V5a1.5 1.5 0 0 1 3 0v5 M11 9V4a1.5 1.5 0 0 1 3 0v6 M14 9V5a1.5 1.5 0 0 1 3 0v8c0 4-2 7-6 7s-6-3-7-7l-1-3a1.5 1.5 0 0 1 3-1l1 2'};
+const ic=(k,s)=>`<svg viewBox="0 0 24 24"${s?` style="width:${s}px;height:${s}px"`:''}><path d="${P[k]}"/></svg>`;
+const load=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch{return d}},save=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch{}};
+let S=Object.assign({lang:'en',ed:'en.sahih',ln:'English',bm:[],prog:null,city:null,geo:null,fa:30,ft:16,fr:16,sa:1,st:1,sr:1,rc:'ar.alafasy',rn:'Mishary Alafasy',sp:1,pm:4,sc:0,th:'green'},load('sq2',{}));if(S.th==='sand')S.th='sepia';
+const persist=()=>save('sq2',S),fsz=()=>{const r=document.documentElement;r.style.setProperty('--fs',S.fa+'px');r.style.setProperty('--ft',S.ft+'px');r.style.setProperty('--fr',S.fr+'px');r.setAttribute('data-theme',S.th==='system'?(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'):S.th==='sand'?'sepia':S.th)};fsz();matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change',fsz);
+const NAV=[['/','Home','home'],['/quran','Quran','quran'],['/search','Search','search'],['/short','Short Surahs','star'],['/bookmarks','Bookmarks','bm'],['/learn','Learn Arabic','grad'],['/pray','How to Pray','hand'],['/tajweed','Tajweed','quran'],['/audio','Audio','music'],['/qibla','Qibla','compass'],['/prayer','Prayer Times','clock'],['/location','Location','pin'],['/themes','Themes','pal'],['/settings','Settings','set'],['/about','About','info']];
+$('#nav').innerHTML=NAV.map(n=>`<a href="#${n[0]}">${ic(n[2])}${n[1]}</a>`+(n[1]==='Location'?`<button id="nl">${ic('globe')}Language</button>`:'')).join('');
+$('#bt').innerHTML=[0,1,5,10].map(i=>`<a href="#${NAV[i][0]}">${ic(NAV[i][2])}${i==5?'Learn':i==10?'Prayer':NAV[i][1]}</a>`).join('');
+$('#mb').innerHTML=ic('menu');$('#ms').innerHTML=ic('search');$('#cl').innerHTML=ic('x');
+const menu=o=>{$('#sd').classList.toggle('open',o);$('#ov').classList.toggle('open',o)};
+$('#mb').onclick=()=>menu(true);$('#cl').onclick=$('#ov').onclick=()=>menu(false);
+const toast=t=>{const e=document.createElement('div');e.className='toast';e.textContent=t;document.body.append(e);setTimeout(()=>e.remove(),1600)};
+async function jf(u,n=3){for(let i=0;i<n;i++){try{const c=new AbortController(),t=setTimeout(()=>c.abort(),15000),r=await fetch(u,{signal:c.signal});clearTimeout(t);const j=await r.json();if(j.code===200)return j.data}catch{}await new Promise(r=>setTimeout(r,600*(i+1)))}throw 0}
+async function cached(k,u,ok){const c=load(k);if(c&&ok(c))return c;const d=await jf(u);if(!ok(d))throw 0;save(k,d);return d}
+const surahs=()=>cached('sq2_s',API+'/surah',d=>Array.isArray(d)&&d.length===114);
+const errB=`<div class="card err"><p>Quran content could not be loaded.</p><button class="btn" onclick="route()">Retry</button> <a class="btn" href="#/quran">Back to Quran</a></div>`;
+const nz=x=>String(x).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
+function pick(title,items,cur,cb,search=true){const d=document.createElement('div');d.className='dlg';d.setAttribute('role','dialog');
+d.innerHTML=`<div><b>${esc(title)}</b>${search?'<input class="inp" placeholder="Search languages..." aria-label="Search">':''}<div class="list"></div><button class="btn" style="margin-top:8px">Cancel</button></div>`;
+const L=d.querySelector('.list'),q=d.querySelector('input'),dr=()=>{const t=(q?.value||'').toLowerCase();L.innerHTML='';items.filter(i=>nz(i.label+' '+i.sub+' '+(i.id||'')+' '+(i.lang||'')).includes(nz(t))).forEach(i=>{const b=document.createElement('button');if(i.id===cur)b.className='sel';b.innerHTML=`<span>${i.id===cur?'✓ ':''}${esc(i.label)}</span><span class="mut">${esc(i.sub)}</span>`;b.onclick=()=>{d.remove();cb(i)};L.append(b)})};dr();if(q){q.setAttribute('autocomplete','off');['input','keyup','change'].forEach(ev=>q.addEventListener(ev,dr))}
+d.querySelector('.btn').onclick=()=>d.remove();d.onclick=e=>{if(e.target===d)d.remove()};d.onkeydown=e=>e.key==='Escape'&&d.remove();document.body.append(d);(q||d).focus()}
+async function chooseLang(){try{const eds=await cached('sq2_eds',API+'/edition?format=text&type=translation',d=>Array.isArray(d)&&d.length>5),m={};eds.forEach(e=>{if(!m[e.language])m[e.language]=e});
+const nm=(l,t)=>{try{return new Intl.DisplayNames([t],{type:'language'}).of(l)}catch{return l}};
+const items=Object.values(m).map(e=>({id:e.identifier,label:nm(e.language,e.language),sub:nm(e.language,'en'),lang:e.language})).sort((a,b)=>a.sub.localeCompare(b.sub));
+pick('Choose Translation Language',items,S.ed,i=>{S.ed=i.id;S.lang=i.lang;S.ln=i.label;persist();route();toast('Language: '+i.sub)})}catch{toast('Translation list could not be loaded.')}}
+$('#nl').onclick=()=>{menu(false);chooseLang()};
+/* audio */
+const A={a:new Audio(),id:null,q:[],i:0,st:'idle',cb:null};A.a.preload='none';
+const setS=s=>{A.st=s;A.cb&&A.cb()},fmt=s=>isFinite(s)?Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0'):'0:00';
+A.a.onplaying=()=>setS('playing');A.a.onwaiting=()=>setS('loading');A.a.onpause=()=>{if(A.st==='playing')setS('paused')};A.a.onerror=()=>setS('error');
+A.a.ontimeupdate=()=>{const p=$('#pb i');if(p&&A.a.duration)p.style.width=A.a.currentTime/A.a.duration*100+'%'};
+A.a.onended=()=>{if(A.i<A.q.length-1){A.i++;pu()}else{A.id=null;A.q=[];setS('idle')}};
+function pu(){const t=A.q[A.i];A.id=t.id;setS('loading');A.a.src=t.url;A.a.playbackRate=S.sp||1;A.a.play().catch(e=>{setS('error');if(e&&e.name==='NotAllowedError')toast('Tap Play to start audio.')});document.querySelectorAll('.ay').forEach(x=>x.classList.toggle('on',x.dataset.id==A.id))}
+const pq=(q,i=0)=>{A.a.pause();A.q=q;A.i=i;pu()},stopA=()=>{A.a.pause();A.q=[];A.id=null;A.st='idle';A.cb=null};
+const tog=()=>A.st==='playing'?A.a.pause():A.a.play().catch(()=>setS('error'));
+const MET=[[4,'Umm Al-Qura, Makkah'],[2,'ISNA (North America)'],[3,'Muslim World League'],[1,'University of Islamic Sciences, Karachi'],[5,'Egyptian General Authority'],[8,'Gulf Region'],[9,'Kuwait'],[10,'Qatar'],[16,'Dubai'],[13,'Diyanet, Turkey'],[15,'Moonsighting Committee'],[17,'JAKIM, Malaysia'],[11,'Singapore'],[12,'France'],[20,'KEMENAG, Indonesia'],[7,'Tehran']];
+async function recSel(){try{const e=await cached('sq2_rec',API+'/edition?format=audio&type=versebyverse',d=>Array.isArray(d)&&d.length>0);pick('Reciter',e.filter(x=>x.language==='ar').map(x=>({id:x.identifier,label:x.englishName,sub:''})),S.rc,i=>{S.rc=i.id;S.rn=i.label;persist();R.settings()})}catch{toast('Reciter list could not be loaded.')}}
+/* views */
+const V=$('#v'),isBm=(s,a)=>S.bm.some(b=>b.s==s&&b.a==a);
+const row=s=>`<a class="row" href="#/quran/surah/${s.number}"><span class="num">${s.number}</span><span class="m">${esc(s.englishName)}<br><small>${s.numberOfAyahs} ayahs • ${s.revelationType}</small></span><span class="ar">${esc(s.name.replace(/^سُورَةُ\s*/,''))}</span></a>`;
+const page=(t,h)=>V.innerHTML=`<div class="top"><a href="#/" aria-label="Back">${ic('back')}</a><span>${t}</span><a href="#/search" aria-label="Search">${ic('search')}</a></div><div class="lt">${h}</div>`;
+const R={
+async home(){const g=new Date().getHours(),d=new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
+V.innerHTML=`<div class="dk"><div class="gr"><div><div class="hi ar">السلام عليكم</div>${g<12?'Good morning':g<18?'Good afternoon':'Good evening'} · ${d}</div><button class="en" id="lg">${S.lang.toUpperCase()}</button></div>
+<div class="cont"><small>CONTINUE READING</small><div>${S.prog?`<a href="#/quran/surah/${S.prog.s}?a=${S.prog.a}">${esc(S.prog.name)} — Ayah ${S.prog.a}</a>`:'Begin your journey — <a href="#/quran" style="color:var(--gold)">browse the Surahs</a>'}</div></div></div>
+<div class="lt"><div class="card" style="display:flex;justify-content:space-between;align-items:center"><div><div class="mut">Next Prayer</div><h2 id="np" style="margin:2px 0;font-size:1.6rem">—</h2><div class="mut" id="nc">in --:--:--</div></div><span class="ar" style="font-size:2rem;color:var(--gold)">صلاة</span></div>
+<div class="pills"><a href="#/short">${ic('star')}Short Surahs</a><a href="#/bookmarks">${ic('bm')}Bookmarks</a><a href="#/audio">${ic('music')}Audio</a><a href="#/settings">${ic('set')}Settings</a></div>
+<div class="sh"><h2>Surahs</h2><a href="#/quran">View all</a></div><div id="sl">Loading…</div></div>`;
+$('#lg').onclick=chooseLang;prayerNext();try{$('#sl').innerHTML=(await surahs()).slice(0,10).map(row).join('')}catch{$('#sl').innerHTML=errB}},
+async quran(){page('Quran','<input class="inp" id="f" placeholder="Filter Surahs..." aria-label="Filter"><div id="sl">Loading…</div>');try{const s=await surahs(),f=$('#f'),d=()=>{const t=f.value.toLowerCase();$('#sl').innerHTML=s.filter(x=>(x.englishName+x.name+x.number).toLowerCase().includes(t)).map(row).join('')};f.oninput=d;d()}catch{$('#sl').innerHTML=errB}},
+async short(){page('Short Surahs','<div id="sl">Loading…</div>');try{const s=await surahs();$('#sl').innerHTML=[112,113,114,108,103,110,109,111,106,105,107].map(n=>row(s[n-1])).join('')}catch{$('#sl').innerHTML=errB}},
+async surah(n,qs){n=+n;if(!Number.isInteger(n)||n<1||n>114)return R.nf('Surah not found. Choose a Surah from 1 to 114.');
+stopA();page('Al-Quran',`<div class="mut">Loading ${esc(S.ln)} translation…</div>`);
+const ids=['quran-uthmani','en.transliteration',S.ed,S.rc];if(S.ed!=='en.sahih')ids.push('en.sahih');
+let D;try{const r=await cached(`sq2_${n}_${ids.join('_')}`,`${API}/surah/${n}/editions/${ids.join(',')}`,d=>Array.isArray(d)&&d.length===ids.length&&d.every(e=>e.ayahs?.length>0&&e.ayahs.every(a=>a.text||a.audio)));D=Object.fromEntries(r.map(e=>[e.edition.identifier,e]))}catch{page('Al-Quran',errB);return}
+const ar=D['quran-uthmani'],tl=D['en.transliteration'],tr=D[S.ed],au=D[S.rc],en=S.ed!=='en.sahih'?D['en.sahih']:null;
+const blk=(a,i)=>(S.sa?`<div class="txt ar" lang="ar" dir="rtl">${esc(a.text)}</div>`:'')+(S.st?`<div class="tl">${esc(tl.ayahs[i].text)}</div>`:'')+(S.sr?`<div class="tr" lang="${esc(S.lang)}">${en?`<span class="lb">${esc(S.ln)}</span>`:''}${esc(tr.ayahs[i].text)}</div>`+(en?`<div class="tr" style="color:#4b5f55"><span class="lb">English meaning</span>${esc(en.ayahs[i].text)}</div>`:''):'');
+const name=ar.englishName,all=()=>ar.ayahs.map((a,i)=>({id:a.number,url:au.ayahs[i].audio,n:i+1}));
+V.innerHTML=`<div class="top"><a href="#/quran" aria-label="Back">${ic('back')}</a><span>${esc(name)}</span><a href="#/search" aria-label="Search">${ic('search')}</a></div><div class="lt" style="max-width:1000px">
+<div class="hero"><div class="ar">${esc(ar.name.replace(/^سُورَةُ\s*/,''))}</div><div style="font-size:1.4rem;font-weight:600">${esc(name)}</div><div style="color:#aab9b0;margin:6px 0">${ar.numberOfAyahs} Ayahs · ${ar.revelationType}</div>
+<button class="gb f" id="ps">${ic('play',18)}Play Surah</button><button class="gb" id="lg">${ic('globe',18)}${esc(S.ln)}</button><div class="bar" id="pb"><i></i></div><div id="pm" style="color:#aab9b0;font-size:.85rem;min-height:1.2em"></div></div>
+${ar.ayahs.map((a,i)=>`<div class="card ay" data-id="${a.number}" data-n="${i+1}"><div class="ah"><span class="num sm">${i+1}</span><div><button class="ib" data-a="p" aria-label="Play">${ic('play')}</button><button class="ib" data-a="b" aria-label="Bookmark">${ic('bm')}</button><button class="ib" data-a="c" aria-label="Copy">${ic('copy')}</button><button class="ib" data-a="s" aria-label="Share">${ic('share')}</button></div></div>
+${blk(a,i)}</div>`).join('')}<div class="mut" style="font-size:.85rem;padding:8px 4px">Arabic text: Tanzil.net (Uthmani) · Transliteration: ${esc(tl.edition?.englishName||'')} · Translation: ${esc(tr.edition?.englishName||'')}${en?' · English: '+esc(en.edition?.englishName||''):''} · Recitation: ${esc(au.edition?.englishName||'')}</div></div>`;
+document.querySelectorAll('.ay').forEach(c=>{const b=c.querySelector('[data-a=b]');b.style.color=isBm(n,+c.dataset.n)?'var(--gold)':''});
+$('#lg').onclick=chooseLang;
+const lab=()=>{$('#ps').innerHTML=(A.st==='playing'?ic('pause',18)+'Pause':A.st==='paused'?ic('play',18)+'Resume':A.st==='loading'?'Loading…':A.st==='error'?'Retry':ic('play',18)+'Play Surah');
+$('#pm').textContent=A.st==='error'?'Audio could not be loaded. Please try again.':A.st==='idle'?'':`Ayah ${A.q[A.i]?.n} · ${fmt(A.a.currentTime)}`;
+document.querySelectorAll('.ay').forEach(c=>{const on=c.dataset.id==A.id;c.querySelector('[data-a=p]').innerHTML=ic(on&&A.st==='playing'?'pause':'play')})};A.cb=lab;
+$('#ps').onclick=()=>{if(A.st==='playing'||A.st==='paused')tog();else pq(all(),0)};
+$('#pb').onclick=e=>{if(A.a.duration){const r=e.currentTarget.getBoundingClientRect();A.a.currentTime=(e.clientX-r.left)/r.width*A.a.duration}};
+V.onclick=e=>{const b=e.target.closest('[data-a]');if(!b)return;const c=b.closest('.ay'),i=+c.dataset.n,k=b.dataset.a,tx=`${ar.ayahs[i-1].text}\n${tr.ayahs[i-1].text}\n— ${name} ${n}:${i}`;
+if(k==='p'){if(A.id==c.dataset.id&&(A.st==='playing'||A.st==='paused'))tog();else pq([all()[i-1]],0)}
+if(k==='b'){S.bm=isBm(n,i)?S.bm.filter(x=>!(x.s==n&&x.a==i)):[...S.bm,{s:n,a:i,name}];persist();b.style.color=isBm(n,i)?'var(--gold)':'';toast(isBm(n,i)?'Bookmarked':'Removed')}
+if(k==='c')navigator.clipboard?.writeText(tx).then(()=>toast('Copied'),()=>toast('Copy not available'));
+if(k==='s'){if(navigator.share)navigator.share({text:tx}).catch(()=>{});else navigator.clipboard?.writeText(tx).then(()=>toast('Copied'))}};
+if('IntersectionObserver'in window){const io=new IntersectionObserver(en=>en.forEach(x=>{if(x.isIntersecting){S.prog={s:n,a:+x.target.dataset.n,name};persist()}}),{threshold:.6});document.querySelectorAll('.ay').forEach(x=>io.observe(x))}
+const t=new URLSearchParams(qs||'').get('a');if(t)document.querySelector(`.ay[data-n="${+t}"]`)?.scrollIntoView()},
+search(){page('Search','<input class="inp" id="q" placeholder="Surah name or word in translation" aria-label="Search"><div id="sr" class="mut">Type at least 3 letters.</div>');let t;$('#q').oninput=e=>{clearTimeout(t);const q=e.target.value.trim();if(q.length<3)return;t=setTimeout(async()=>{$('#sr').textContent='Searching…';try{let h=(await surahs()).filter(x=>(x.englishName+x.name).toLowerCase().includes(q.toLowerCase())).map(row).join('');try{const r=await jf(`${API}/search/${encodeURIComponent(q)}/all/${S.ed}`,1);h+=r.matches.slice(0,30).map(m=>`<a class="row" href="#/quran/surah/${m.surah.number}?a=${m.numberInSurah}"><span class="num sm">${m.numberInSurah}</span><span class="m"><small>${esc(m.surah.englishName)}</small><br>${esc(m.text)}</span></a>`).join('')}catch{}$('#sr').innerHTML=h||'No results found.'}catch{$('#sr').innerHTML=errB}},400)}},
+bookmarks(){page('Bookmarks',S.bm.length?S.bm.map(b=>`<a class="row" href="#/quran/surah/${b.s}?a=${b.a}"><span class="num sm">${b.a}</span><span class="m">${esc(b.name)}<br><small>Surah ${b.s} · Ayah ${b.a}</small></span></a>`).join(''):'<div class="card">No bookmarks yet. Tap the bookmark icon on any Ayah.</div>')},
+audio(){page('Audio','<div class="card"><b>Reciter</b><p>'+esc(S.rn)+'</p><p class="mut">Open a Surah and press Play Surah, or play single Ayahs.</p><a class="btn" href="#/quran">Browse Surahs</a></div>')},
+learn(){const L='ا ب ت ث ج ح خ د ذ ر ز س ش ص ض ط ظ ع غ ف ق ك ل م ن ه و ي'.split(' '),N='Alif,Ba,Ta,Tha,Jim,Ha,Kha,Dal,Dhal,Ra,Zay,Sin,Shin,Sad,Dad,Ta,Zha,Ayn,Ghayn,Fa,Qaf,Kaf,Lam,Mim,Nun,Ha,Waw,Ya'.split(',');page('Learn Arabic','<div class="letters">'+L.map((l,i)=>`<div><div class="ar">${l}</div>${N[i]}</div>`).join('')+'</div>')},
+settings(){
+const sl=(k,l,mn,mx)=>`<div class="rw"><div style="display:flex;justify-content:space-between"><span>${l}</span><span class="mut">${S[k]}px</span></div><input type="range" data-k="${k}" min="${mn}" max="${mx}" value="${S[k]}" style="width:100%;margin-top:10px;accent-color:#0f4d3b" aria-label="${l}"></div>`,
+tg=(k,l)=>`<div class="rw ln"><span>${l}</span><button class="tgl${S[k]?' on':''}" data-t="${k}" role="switch" aria-checked="${!!S[k]}" aria-label="${l}"><i></i></button></div>`,
+lk=(id,l,v)=>`<button class="rw ln" id="${id}"><span>${l}</span><span class="mut">${esc(v)}${ic('chev',18)}</span></button>`,
+al=(h,l)=>`<a class="rw ln" href="${h}"><span>${l}</span><span class="mut">${ic('chev',18)}</span></a>`,
+H=(i,t)=>`<h3 class="sh3">${ic(i)}${t}</h3>`,TH={system:'System',green:'Islamic Green',light:'Light',dark:'Dark',sepia:'Sepia'};
+page('Settings',`<div style="max-width:900px;margin:auto">
+<div class="card">${H('type','Reading')}${sl('fa','Arabic font size',20,48)}${sl('ft','Transliteration font size',12,28)}${sl('fr','Translation font size',12,28)}${tg('sa','Show Arabic')}${tg('st','Show transliteration')}${tg('sr','Show translation')}</div>
+<div class="card">${H('ear','Audio')}<div class="rw">Reciter<button class="selb" id="rc"><span>${esc(S.rn)}</span>${ic('chev',18)}</button></div><div class="rw"><div style="display:flex;justify-content:space-between"><span>Playback speed</span><span class="mut">${S.sp}x</span></div><div class="sp">${[.75,1,1.25,1.5,2].map(x=>`<button data-sp="${x}" class="${x==S.sp?'on':''}">${x}x</button>`).join('')}</div></div></div>
+<div class="card">${H('globe','Language')}${lk('s1','Translation language',S.lang.toUpperCase())}</div>
+<div class="card">${H('pal','Theme')}${lk('s2','Choose theme',TH[S.th])}</div>
+<div class="card">${H('pin','Location')}${al('#/location','<span>Set location</span>').replace('<span><span>Set location</span></span>','<span>Set location</span>')}<div class="mut" style="padding-bottom:6px">${S.geo?'Using your device location':S.city?.city?esc(S.city.city):'Not set'}</div></div>
+<div class="card">${H('clock','Prayer')}<div class="rw">Calculation Method<button class="selb" id="pm"><span>${esc(MET.find(m=>m[0]==S.pm)?.[1]||'')}</span>${ic('chev',18)}</button></div><div class="rw">Asr Calculation<button class="selb" id="sc"><span>${S.sc?'Hanafi':'Standard (Shafi, Maliki, Hanbali)'}</span>${ic('chev',18)}</button></div></div>
+<div class="card">${H('user','Account Management')}<div class="rw">Signed in as<br><span class="mut">Guest — this version has no account</span></div><button class="rw dg ln" id="dl"><span>${ic('warn')} Clear all data on this device</span></button></div>
+<div class="card">${H('shield','Privacy')}${al('#/privacy','Privacy &amp; data')}${al('#/sources','License &amp; sources')}</div>
+<div class="card">${H('info','About')}${al('#/about','About this app')}${al('#/license','Copyright &amp; license')}${al('#/sources','License &amp; sources')}</div>
+<p class="mut" style="text-align:center">Sirat Al-Quran · Version 1.0.0<br>© ${YR} ${esc(OWNER)}. All rights reserved.</p></div>`);
+V.oninput=e=>{const t=e.target;if(t.dataset.k){S[t.dataset.k]=+t.value;persist();fsz();t.closest('.rw').querySelector('.mut').textContent=t.value+'px'}};
+V.onclick=e=>{const t=e.target.closest('button');if(!t)return;
+if(t.dataset.t){S[t.dataset.t]=S[t.dataset.t]?0:1;persist();t.classList.toggle('on',!!S[t.dataset.t]);t.setAttribute('aria-checked',!!S[t.dataset.t])}
+if(t.dataset.sp){S.sp=+t.dataset.sp;persist();R.settings()}
+if(t.id==='s1')chooseLang();
+if(t.id==='s2')pick('Choose theme',Object.entries(TH).map(([k,v])=>({id:k,label:v,sub:''})),S.th,i=>{S.th=i.id;persist();fsz();R.settings()},false);
+if(t.id==='pm')pick('Calculation Method',MET.map(m=>({id:m[0],label:m[1],sub:''})),S.pm,i=>{S.pm=i.id;PT=null;persist();R.settings()});
+if(t.id==='sc')pick('Asr Calculation',[{id:0,label:'Standard (Shafi, Maliki, Hanbali)',sub:''},{id:1,label:'Hanafi',sub:''}],S.sc,i=>{S.sc=i.id;PT=null;persist();R.settings()},false);
+if(t.id==='rc')recSel();
+if(t.id==='dl'&&confirm('Delete bookmarks, progress and settings stored on this device?')){Object.keys(localStorage).filter(k=>k.startsWith('sq2')).forEach(k=>localStorage.removeItem(k));location.reload()}}},
+location(){R.prayer()},
+themes(){const D=[['system','System','Follow your device\'s light/dark mode',['#0f3f2f','#f3f5f1','#07140f']],['green','Islamic Green','Emerald &amp; mint cream — default',['#0f3f2f','#f3f5f1','#c9a15a']],['light','Light','Clean white reading',['#0f3f2f','#ffffff','#c9a15a']],['dark','Dark','Deep night for low-light reading',['#07140f','#1f3a31','#c9a15a']],['sepia','Sepia','Warm parchment tone',['#7c5a2a','#fbf4e6','#a87c3e']]];
+page('Themes',`<div style="max-width:1000px;margin:auto"><p class="mut" style="margin-top:0">Changes apply instantly and are remembered.</p><div class="thg">${D.map(d=>`<button class="thc${S.th===d[0]?' on':''}" data-th="${d[0]}" aria-pressed="${S.th===d[0]}"><span class="sw">${d[3].map(c=>`<i style="background:${c}"></i>`).join('')}</span><b>${d[1]}<span style="color:var(--gold)">${S.th===d[0]?'✓':''}</span></b><span class="mut">${d[2]}</span></button>`).join('')}</div></div>`);
+V.onclick=e=>{const b=e.target.closest('[data-th]');if(b){S.th=b.dataset.th;persist();fsz();R.themes()}}},
+privacy(){page('Privacy &amp; data','<div class="card tr">Your settings, bookmarks and reading progress are stored only in this browser (localStorage) and can be erased from Settings. This app has no account system. Requests go to AlQuran.cloud (Quran text and translations), Islamic Network CDN (audio) and Aladhan (prayer times). If you allow location, your coordinates are sent to Aladhan to calculate prayer times; Qibla is computed on your device. No analytics or advertising are included.</div>')},
+sources(){const C=(t,x)=>`<div class="card"><h3 class="sh3">${t}</h3><div class="tr">${esc(x)}</div></div>`;
+page('License &amp; sources',`<div style="max-width:900px;margin:auto">${[["Quran text", "Arabic (Uthmani) text from the Tanzil Project (tanzil.net), served through the AlQuran.cloud API. Tanzil permits verbatim copying and distribution of the text but does not permit changing it, and asks that tanzil.net is credited. Read the full terms at tanzil.net."],["Transliteration and translations", "Community and translator editions provided through AlQuran.cloud. Each edition credits its own translator, and the reader shows the edition names at the bottom of every Surah. Rights in each translation remain with its translator or publisher."],["Audio recitation", "Recitations are streamed from the Islamic Network CDN (cdn.islamic.network). Rights in each recitation remain with the reciter and publisher. Audio is streamed, not stored in the Application."],["Prayer times", "Calculated by the Aladhan API (aladhan.com) from your chosen location and calculation method. The Qibla bearing is calculated on your device."],["Fonts", "Amiri, Amiri Quran and Plus Jakarta Sans are loaded from Google Fonts and are licensed under the SIL Open Font License 1.1."],["App packaging", "When packaged as an Android or iOS app, the Application uses Capacitor, which is released under the MIT licence."]].map(x=>C(x[0],x[1])).join('')}<p class="mut">Please review each provider's terms before redistributing their content. <a href="#/license" style="color:var(--hd)">Application copyright &amp; license</a></p></div>`)},
+license(){page('Copyright &amp; license',`<div style="max-width:900px;margin:auto"><p class="mut" style="margin-top:0">Last updated: 4 October 2026</p>${LIC.map((x,i)=>`<div class="card"><h3 class="sh3">${i+1}. ${esc(x[0])}</h3>${x[1].map(t=>`<div class="tr">${esc(t.replaceAll('{OWNER}',OWNER).replaceAll('{YR}',YR))}</div>`).join('')}</div>`).join('')}<a class="btn" href="#/sources">License &amp; sources</a> <a class="btn" href="#/privacy">Privacy &amp; data</a></div>`)},
+about(){const C=(i,t,x)=>`<div class="card">${H2(i,t)}<div class="tr mut">${x}</div></div>`,H2=(i,t)=>`<h3 class="sh3">${ic(i)}${t}</h3>`;
+page('About',`<div style="max-width:960px;margin:auto"><div style="text-align:center"><div class="ar" style="font-family:Amiri;font-size:3rem;color:var(--gold)">القرآن</div><h2 style="margin:0">Al Quran</h2><div class="mut">Version 1.0.0 · Created by ${esc(OWNER)}</div><p class="tr" style="margin:18px auto;max-width:760px">A calm, modern Quran reader for reading Arabic, transliteration, and translations in many languages — with prayer times, Qibla compass, and audio recitation. Designed for both beginners and regular readers.</p></div>
+${C('home','Quran text source','Arabic (Uthmani) text from Tanzil.net, served via the AlQuran.cloud API. The Arabic text is preserved exactly as provided and is never modified.')}${C('globe','Transliteration &amp; translations','Latin transliteration and language translations are community editions provided by AlQuran.cloud. Each translation carries its own translator attribution. Only languages with an available edition are listed.')}${C('music','Audio recitation','Recitations are streamed from the Islamic Network CDN (cdn.islamic.network) via AlQuran.cloud audio editions, including reciters such as Mishary Alafasy.')}${C('home','Prayer times &amp; Qibla','Prayer times calculated by the Aladhan API (aladhan.com) using your selected location and calculation method. Qibla direction is computed locally from your coordinates to the Kaaba (21.4225°N, 39.8262°E).')}
+${C('user','Created by','Sirat Al-Quran was designed and developed by '+esc(OWNER)+'. © '+YR+' '+esc(OWNER)+'. All rights reserved.')}<a class="card rw ln" href="#/license" style="border:1px solid var(--bd)"><span>${ic('doc')} License, copyright &amp; privacy</span>${ic('chev',18)}</a><a class="card rw ln" href="#/themes" style="border:1px solid var(--bd)"><span>${ic('shield')} Appearance &amp; themes</span>${ic('chev',18)}</a></div>`)},
+prayer(){page('Prayer Times',`<div class="card" id="pt">Loading…</div><div class="card"><input class="inp" id="ci" placeholder="City" value="${esc(S.city?.city||'')}"><input class="inp" id="co" placeholder="Country" value="${esc(S.city?.country||'')}"><button class="btn" id="cs">Use this location</button> <button class="btn" id="gp">Use my location</button></div>`);
+$('#cs').onclick=()=>{S.city={city:$('#ci').value,country:$('#co').value};S.geo=null;PT=null;persist();pDraw()};$('#gp').onclick=()=>navigator.geolocation?.getCurrentPosition(p=>{S.geo={lat:p.coords.latitude,lng:p.coords.longitude};PT=null;persist();pDraw()},()=>toast('Location denied. Enter a city instead.'));pDraw()},
+qibla(){page('Qibla','<div class="card" style="text-align:center"><div class="compass"><i id="nd"></i></div><div id="qi">Allow location to find the Qibla direction.</div><br><button class="btn" id="qb">Start compass</button></div>');
+$('#qb').onclick=()=>{if(!navigator.geolocation)return $('#qi').textContent='Location is unavailable on this device.';navigator.geolocation.getCurrentPosition(async p=>{const b=bear(p.coords.latitude,p.coords.longitude);$('#qi').textContent=`Qibla bearing: ${b.toFixed(1)}° from North`;$('#nd').style.transform=`rotate(${b}deg)`;
+if(typeof DeviceOrientationEvent==='undefined')return $('#qi').textContent+=' — Compass sensor is unavailable on this device.';
+try{if(DeviceOrientationEvent.requestPermission&&await DeviceOrientationEvent.requestPermission()!=='granted')throw 0}catch{return $('#qi').textContent+=' — Motion permission denied.'}
+let got=0,cur=0;const h=e=>{const d=e.webkitCompassHeading??(e.absolute&&e.alpha!=null?360-e.alpha:null);if(d==null)return;got=1;const t=nm(b-d);cur+=((t-cur+540)%360)-180;$('#nd').style.transform=`rotate(${cur}deg)`};
+addEventListener('deviceorientationabsolute',h,true);addEventListener('deviceorientation',h,true);setTimeout(()=>{if(!got)$('#qi').textContent+=' — Compass sensor is unavailable on this device.'},2500)},()=>$('#qi').textContent='Location permission denied.')}},
+pray(){const H=(t,r)=>`<div class="card"><b>${t}</b><div class="tr">${r}</div></div>`,Z=(a,e)=>`<div class="txt ar" style="font-size:1.6rem;line-height:2.2">${a}</div><div class="tl">${e}</div>`;
+page('How to Pray',`<div class="card mut">A beginner's guide to the prayer as taught in the Sunnah. Scholars and schools differ on some details (hand position, Witr, and others); learn the finer points from a qualified teacher.</div>
+${H('1. Wudu','Say Bismillah. Wash hands, rinse mouth, clean nose, wash face, wash arms to the elbows, wipe the head and ears, then wash feet to the ankles. Wash each part up to three times, in order.')}
+${H('2. Preparation','Be in a state of purity, wear clean covering clothes, face the Qibla, and pray within the time.')}
+${H('3. Intention and Takbir','Make the intention in the heart for the specific prayer; it is not spoken aloud. Stand, raise the hands to the shoulders or ears and say:'+Z('اللهُ أَكْبَرُ','Allahu Akbar'))}
+${H('4. Qiyam (standing)','Place the hands on the chest or above the navel (schools differ). Optionally say an opening supplication, seek refuge in Allah, say Bismillah, then recite Al-Fatihah (Surah 1) and another Surah in the first two rakahs. Look toward the place of prostration.')}
+${H('5. Ruku (bowing)','Say Allahu Akbar and bow with the back straight, hands on the knees. Say three times:'+Z('سُبْحَانَ رَبِّيَ الْعَظِيمِ','Subhana Rabbiyal Azeem'))}
+${H('6. Standing after Ruku','Rise saying:'+Z('سَمِعَ اللَّهُ لِمَنْ حَمِدَهُ','Sami Allahu liman hamidah')+Z('رَبَّنَا وَلَكَ الْحَمْدُ','Rabbana wa lakal hamd'))}
+${H('7. Sujood (prostration)','Say Allahu Akbar and prostrate on seven points: forehead with nose, both palms, both knees, and the toes of both feet. Say three times:'+Z('سُبْحَانَ رَبِّيَ الْأَعْلَى','Subhana Rabbiyal A\'la'))}
+${H('8. Sitting between the two Sujood','Sit up saying Allahu Akbar and say:'+Z('رَبِّ اغْفِرْ لِي','Rabbigh-fir li')+'Then prostrate a second time. This completes one rakah; stand for the next.')}
+${H('9. Tashahhud (after the 2nd rakah)','Sit and recite:'+Z('التَّحِيَّاتُ لِلَّهِ وَالصَّلَوَاتُ وَالطَّيِّبَاتُ، السَّلَامُ عَلَيْكَ أَيُّهَا النَّبِيُّ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ، السَّلَامُ عَلَيْنَا وَعَلَى عِبَادِ اللَّهِ الصَّالِحِينَ، أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ','At-tahiyyatu lillahi was-salawatu wat-tayyibat... ash-hadu an la ilaha illallah wa ash-hadu anna Muhammadan abduhu wa rasuluh')+'In prayers of three or four rakahs, stand after this for the remaining rakahs.')}
+${H('10. Final Tashahhud and Salawat Ibrahimiyyah','In the last rakah, recite the Tashahhud, then:'+Z('اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ، اللَّهُمَّ بَارِكْ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا بَارَكْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ','Allahumma salli ala Muhammad... innaka Hamidun Majid')+'Then make a personal dua if you wish.')}
+${H('11. Taslim (ending)','Turn the face to the right, then the left, saying each time:'+Z('السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللَّهِ','Assalamu alaykum wa rahmatullah'))}
+${H('Rakahs of the daily prayers (Fard)','Fajr 2, Dhuhr 4, Asr 4, Maghrib 3, Isha 4.')}
+${H('Sunnah and voluntary prayers','Commonly taught regular Sunnah prayers: 2 before Fajr, 4 before and 2 after Dhuhr, 2 after Maghrib, 2 after Isha. Witr is an odd number of rakahs after Isha (its ruling and form differ between schools). Other voluntary prayers can be added.')}`)},
+tajweed(){const L=x=>`<span class="ar" style="font-size:1.6rem;color:var(--gold)">${x}</span>`,C=(t,b)=>`<div class="card"><b>${t}</b><div class="tr">${b}</div></div>`;
+page('Tajweed',`<div style="max-width:900px;margin:auto"><div class="card mut">Tajweed means reciting each letter correctly and giving it its due. This is a beginner summary of widely taught rules. Counts and some details vary between recitation traditions, so learn the finer points from a qualified teacher.</div>
+${C('1. Noon Sakinah and Tanween','When a noon with sukoon (نْ) or tanween (ـً ـٍ ـٌ) is followed by a letter, one of four rules applies:<br><br><b>Izhar (clear):</b> before the throat letters '+L('ء هـ ع ح غ خ')+' pronounce the noon clearly.<br><b>Idgham (merging):</b> before '+L('ي ر م ل و ن')+' the noon merges into the next letter. With '+L('ي ن م و')+' the merge carries ghunnah (nasal sound); with '+L('ل ر')+' it merges without ghunnah.<br><b>Iqlab (changing):</b> before '+L('ب')+' the noon sound changes to a hidden meem with ghunnah.<br><b>Ikhfa (hiding):</b> before the remaining 15 letters '+L('ت ث ج د ذ ز س ش ص ض ط ظ ف ق ك')+' the noon is hidden with ghunnah.')}
+${C('2. Meem Sakinah','When a meem with sukoon (مْ) is followed by:<br><b>Ikhfa Shafawi:</b> '+L('ب')+' — the meem is hidden with ghunnah at the lips.<br><b>Idgham Shafawi:</b> another '+L('م')+' — merged with ghunnah.<br><b>Izhar Shafawi:</b> any other letter — pronounced clearly.')}
+${C('3. Ghunnah','A nasal sound held for about two counts on a noon or meem with shaddah (نّ مّ).')}
+${C('4. Madd (lengthening)','<b>Natural (asli):</b> a vowel is lengthened for two counts (a fathah before alif, kasrah before ya, dammah before waw).<br><b>Connected (muttasil):</b> a hamzah follows the madd letter in the same word; usually lengthened 4 to 5 counts.<br><b>Separated (munfasil):</b> the madd letter ends a word and a hamzah begins the next; usually 4 to 5 counts.<br><b>Necessary (lazim):</b> a madd letter followed by a letter with sukoon or shaddah in the same word; lengthened 6 counts.')}
+${C('5. Qalqalah (echo)','A light bounce on a letter with sukoon from '+L('ق ط ب ج د')+'. It is strongest when stopping on the letter.')}
+${C('6. Heavy and light letters','The letters '+L('خ ص ض غ ط ق ظ')+' are pronounced with a full, heavy mouth. Other letters are light, with some special cases such as the letter ر (ra) and the name of Allah.')}
+${C('7. Stopping (Waqf)','When you stop at the end of a word, the last letter is pronounced with sukoon. Tanween fathah is usually read as a long “a”, and the round ة (ta marbutah) is read as ه. Stop at natural pauses in the meaning, and watch the pause marks written in the Mushaf.')}
+${C('8. Starting (Ibtida)','Begin from a place where the meaning is complete and does not change what the verse says. If you stopped in the middle of a connected phrase, you may go back a few words and start again.')}
+<a class="btn" href="#/learn">Learn the Arabic letters</a></div>`)},
+nf(m){page('404',`<div class="card err"><h2>Page not found</h2><p>${esc(m||'This page does not exist.')}</p><a class="btn" href="#/">Go home</a></div>`)}};
+const nm=x=>((x%360)+360)%360,bear=(la,lo)=>{const r=Math.PI/180,k=21.4225*r,p=la*r,d=39.8262*r-lo*r;return nm(Math.atan2(Math.sin(d),Math.cos(p)*Math.tan(k)-Math.sin(p)*Math.cos(d))/r)};
+/* prayer */
+let PT=null,tk;const dstr=()=>{const d=new Date();return`${d.getDate()}-${d.getMonth()+1}-${d.getFullYear()}`};
+async function pFetch(){const ds=dstr(),u=S.geo?`https://api.aladhan.com/v1/timings/${ds}?latitude=${S.geo.lat}&longitude=${S.geo.lng}&method=${S.pm}&school=${S.sc}`:S.city?.city?`https://api.aladhan.com/v1/timingsByCity/${ds}?city=${encodeURIComponent(S.city.city)}&country=${encodeURIComponent(S.city.country||'')}&method=${S.pm}&school=${S.sc}`:null;if(!u)throw 0;const j=await(await fetch(u)).json();if(j.code!==200)throw 0;PT=j.data.timings;PT._d=ds}
+async function pDraw(){const e=$('#pt');try{await pFetch();e.innerHTML=['Fajr','Sunrise','Dhuhr','Asr','Maghrib','Isha'].map(k=>`<div style="display:flex;justify-content:space-between;padding:9px 0"><b>${k}</b><span>${PT[k]}</span></div>`).join('')}catch{e.textContent='Choose a location to see prayer times.'}}
+async function prayerNext(){clearInterval(tk);try{if(!PT||PT._d!==dstr())await pFetch()}catch{$('#np').textContent='Set location';$('#nc').innerHTML='<a href="#/prayer" style="color:var(--gold)">Open Prayer Times</a>';return}
+const go=()=>{if(!$('#np'))return clearInterval(tk);const n=new Date();let b=null;for(const k of['Fajr','Dhuhr','Asr','Maghrib','Isha']){const[h,m]=PT[k].split(' ')[0].split(':'),t=new Date(n);t.setHours(+h,+m,0,0);if(t>n){b=[k,t];break}}
+if(!b){const[h,m]=PT.Fajr.split(' ')[0].split(':'),t=new Date(n);t.setDate(t.getDate()+1);t.setHours(+h,+m,0,0);b=['Fajr',t]}
+const s=Math.floor((b[1]-n)/1e3),p=x=>String(x).padStart(2,'0');$('#np').textContent=b[0];$('#nc').textContent=`in ${p(Math.floor(s/3600))}:${p(Math.floor(s%3600/60))}:${p(s%60)}`};go();tk=setInterval(go,1000)}
+/* router */
+function route(){menu(false);const[p,qs]=(location.hash.slice(1)||'/').split('?'),s=p.split('/').filter(Boolean),k=s[0]||'home';
+document.querySelectorAll('#nav a,#bt a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+p||(s[0]&&a.getAttribute('href')==='#/'+s[0])));
+if(!(k==='quran'&&s[1]==='surah')){stopA();V.onclick=null;V.oninput=null}scrollTo(0,0);
+if(k==='quran'&&s[1]==='surah')return R.surah(s[2],qs);
+if(k==='prayer'&&s[1]==='times')return R.prayer();
+if(s.length<2&&R[k]&&k!=='nf'&&k!=='surah')return R[k]();R.nf()}
+addEventListener('hashchange',route);route();
+</script>
+</body>
+</html>
